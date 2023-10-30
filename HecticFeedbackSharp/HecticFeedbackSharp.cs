@@ -77,7 +77,7 @@ namespace HecticFeedbackSharp
             DebugLogger.LogInfo("Elapsed: " + elapsed.ToString());
 #endif
 
-            if(elapsed < minDelay)
+            if(elapsed <= minDelay)
             {
 #if DEBUG
                 DebugLogger.LogInfo("Can't trigger: Minimum delay is  " + minDelay.ToString() + "ms but only " + elapsed.ToString() + "ms have passed. ");
