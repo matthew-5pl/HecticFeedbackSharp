@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PreBuildEvent>cd $(MSBuildProjectDirectory); make</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageProjectUrl>https://github.com/matthew-5pl/HecticFeedbackSharp</PackageProjectUrl>
+    <PackageId>MatteF.HecticFeedbackSharp</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>Matteo Forlani</Authors>
+    <Description>Allows you to trigger Mac trackpads' haptic feedback programmatically!</Description>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="libSwiftHaptics.dylib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>  
+    <Content Include="../README.md">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content> 
+  </ItemGroup>
+
+</Project>

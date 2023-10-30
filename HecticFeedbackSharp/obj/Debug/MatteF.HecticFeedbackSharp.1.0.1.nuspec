@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MatteF.HecticFeedbackSharp</id>
+    <version>1.0.1</version>
+    <authors>Matteo Forlani</authors>
+    <projectUrl>https://github.com/matthew-5pl/HecticFeedbackSharp</projectUrl>
+    <description>Allows you to trigger Mac trackpads' haptic feedback programmatically!</description>
+    <dependencies>
+      <group targetFramework="net6.0" />
+    </dependencies>
+    <contentFiles>
+      <files include="any/net6.0/libSwiftHaptics.dylib" buildAction="Content" />
+      <files include="any/net6.0/README.md" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="/Users/matteofo/Documents/aaaa/HecticFeedbackSharp/HecticFeedbackSharp/bin/Debug/net6.0/HecticFeedbackSharp.dll" target="lib/net6.0/HecticFeedbackSharp.dll" />
+    <file src="/Users/matteofo/Documents/aaaa/HecticFeedbackSharp/HecticFeedbackSharp/libSwiftHaptics.dylib" target="content/libSwiftHaptics.dylib" />
+    <file src="/Users/matteofo/Documents/aaaa/HecticFeedbackSharp/HecticFeedbackSharp/libSwiftHaptics.dylib" target="contentFiles/any/net6.0/libSwiftHaptics.dylib" />
+    <file src="/Users/matteofo/Documents/aaaa/HecticFeedbackSharp/README.md" target="content/README.md" />
+    <file src="/Users/matteofo/Documents/aaaa/HecticFeedbackSharp/README.md" target="contentFiles/any/net6.0/README.md" />
+  </files>
+</package>
