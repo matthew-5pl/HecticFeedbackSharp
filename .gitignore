@@ -3,3 +3,7 @@
 *.pdb
 *.deps.json
 .DS_Store
+*.nupkg
+*.nuget.cache
+HecticFeedbackSharp/bin
+HecticFeedbackSharp/obj
