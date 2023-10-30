@@ -1,0 +1,3 @@
+[submodule "HecticFeedbackSharp/HecticFeedback"]
+	path = HecticFeedbackSharp/HecticFeedback
+	url = https://github.com/matthew-5pl/HecticFeedback
