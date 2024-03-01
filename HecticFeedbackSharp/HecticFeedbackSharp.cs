@@ -4,13 +4,6 @@ using System.Threading;
 
 namespace HecticFeedbackSharp
 {
-    public static class Internal
-    {
-        // You shouldn't call this method directly, please use FeedbackPerformer instead!
-        [DllImport("libSwiftHaptics", EntryPoint = "haptic_trigger")]
-        public static extern void InternalHapticTrigger(int type);
-    }
-
     // Feedback type, pretty much equivalent to:
     // https://developer.apple.com/documentation/appkit/nshapticfeedbackmanager/feedbackpattern
     public enum FeedbackType: int 
@@ -45,6 +38,9 @@ namespace HecticFeedbackSharp
         // Timestamp where last feedback event occured.
         private long lastEvent;
 
+        [DllImport("libSwiftHaptics", EntryPoint = "haptic_trigger")]
+        private static extern void InternalHapticTrigger(int type);
+
         // Set the minimum delay (in milliseconds) between feedback events.
         public void SetMinDelay(long value)
         {
@@ -67,7 +63,7 @@ namespace HecticFeedbackSharp
         // @param type Type of feedback to send, changes haptic feel
         public void Perform(FeedbackType type)
         {
-            long now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            long now = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
             elapsed = now - lastEvent;
 
@@ -77,33 +73,29 @@ namespace HecticFeedbackSharp
             DebugLogger.LogInfo("Elapsed: " + elapsed.ToString());
 #endif
 
-            if(elapsed <= minDelay)
+            if(elapsed < minDelay)
             {
 #if DEBUG
                 DebugLogger.LogInfo("Can't trigger: Minimum delay is  " + minDelay.ToString() + "ms but only " + elapsed.ToString() + "ms have passed. ");
+                Thread.Sleep((int)(minDelay - elapsed));
+                InternalHapticTrigger((int)type);
 #endif
             }
             else
             {
-                Internal.InternalHapticTrigger((int)type);
+                InternalHapticTrigger((int)type);
             }
 
-            lastEvent = DateTimeOffset.UtcNow.ToUnixTimeSeconds()-minDelay;
+            lastEvent = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         }
 
-        // Wait in this thread for the set delay time.
-        public void Wait()
+        // Perform Feedback Asynchronously
+        #pragma warning disable CS1998
+        public async Task AsyncPerform(FeedbackType type) 
         {
-            Thread.Sleep((int)minDelay+1);
-        }
-
-        // Wait in this thread for the set delay time, then perform feedback.
-        // Equivalent to calling Wait() and Perform().
-        public void WaitAndPerform(FeedbackType type)
-        {
-            Wait();
             Perform(type);
         }
+        #pragma warning restore CS1998
 
         // Constructor.
         public FeedbackPerformer()

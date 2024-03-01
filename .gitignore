@@ -1,7 +1,15 @@
 *.dylib
 *.dll
 *.pdb
+*.so
+*.CopyComplete
 *.deps.json
+*.cache
+*FileListAbsolute.txt
+references
+resources
+/*/bin
+/*/obj
 .DS_Store
 *.nupkg
 *.nuget.cache

@@ -1,0 +1,21 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="HecticFeedbackSharpUITest.MainWindow"
+        Title="HecticFeedbackSharpUITest">
+    
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock HorizontalAlignment="Center" Text="Testing Mac Haptics!" />
+        <Slider
+        IsSnapToTickEnabled="True"
+        Width="400"
+        TickFrequency="10"
+        x:Name="testSlider"/>
+        <Button HorizontalAlignment="Center" x:Name="testButton">Generic Feedback</Button>
+        <Button HorizontalAlignment="Center" x:Name="testButton2">Alignment Feedback</Button>
+        <Button HorizontalAlignment="Center" x:Name="testButton3">LevelChange Feedback</Button>
+    </StackPanel>
+
+</Window>
