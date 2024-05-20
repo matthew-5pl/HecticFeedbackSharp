@@ -26,21 +26,21 @@ public partial class MainWindow : Window
 
     private void PointerEnterEventGeneric(object? sender, PointerEventArgs e)
     {
-        Task.Run(() => performer.AsyncPerform(FeedbackType.Generic));
+        Task.Run(() => performer.PerformAsync(FeedbackType.Generic));
     }
     
     private void PointerEnterEventAlignment(object? sender, PointerEventArgs e)
     {
-        Task.Run(() => performer.AsyncPerform(FeedbackType.Alignment));
+        Task.Run(() => performer.PerformAsync(FeedbackType.Alignment));
     }
 
     private void PointerEnterEventLevelChange(object? sender, PointerEventArgs e)
     {
-        Task.Run(() => performer.AsyncPerform(FeedbackType.LevelChange));
+        Task.Run(() => performer.PerformAsync(FeedbackType.LevelChange));
     }
 
     private void SliderChange(object? sender, RangeBaseValueChangedEventArgs e)
     {
-        Task.Run(() => performer.AsyncPerform(FeedbackType.Alignment));
+        Task.Run(() => performer.PerformAsync(FeedbackType.LevelChange));
     }
 }

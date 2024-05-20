@@ -77,9 +77,9 @@ namespace HecticFeedbackSharp
             {
 #if DEBUG
                 DebugLogger.LogInfo("Can't trigger: Minimum delay is  " + minDelay.ToString() + "ms but only " + elapsed.ToString() + "ms have passed. ");
+#endif
                 Thread.Sleep((int)(minDelay - elapsed));
                 InternalHapticTrigger((int)type);
-#endif
             }
             else
             {
@@ -91,7 +91,7 @@ namespace HecticFeedbackSharp
 
         // Perform Feedback Asynchronously
         #pragma warning disable CS1998
-        public async Task AsyncPerform(FeedbackType type) 
+        public async Task PerformAsync(FeedbackType type) 
         {
             Perform(type);
         }
